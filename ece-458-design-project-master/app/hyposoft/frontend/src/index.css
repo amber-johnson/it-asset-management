@@ -1,0 +1,45 @@
+:global(section),
+:global(.container),
+:global(.w100) {
+  width: 100%;
+}
+
+:global(.h100) {
+  height: 100vh;
+}
+
+:global(.center-text) {
+  text-align: center;
+}
+
+:global(.mt-1) {
+  margin-top: 8px;
+}
+
+:global(.mt-2) {
+  margin-top: 16px;
+}
+
+:global(.mt-3) {
+  margin-top: 24px;
+}
+
+:global(.mb-1) {
+  margin-bottom: 8px;
+}
+
+:global(.mb-2) {
+  margin-bottom: 16px;
+}
+
+:global(.mb-3) {
+  margin-bottom: 24px;
+}
+
+:global(.pointer-on-hover):hover {
+  cursor: pointer;
+}
+
+:global(.ant-page-header-content) {
+  padding: 0 5px;
+}

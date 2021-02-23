@@ -1,0 +1,19 @@
+asset_number,hostname,datacenter,offline_site,rack,rack_position,chassis_number,chassis_slot,vendor,model_number,owner,comment,power_port_connection_1,power_port_connection_2,custom_display_color,custom_cpu,custom_memory,custom_storage
+100000,Asset 1 Blank DC,RTP1,,A1,2,,,Brian Asset,Asset 1 Blank,,,,,,,,
+100002,Asset 2 Comment,RTP1,,A1,3,,,Brian Asset,Asset 1 Blank,,This asset has an updated comment.,,,,,,
+100003,Asset 3 Owner DC Admin,RTP1,,A1,5,,,Brian Asset,Asset 1 Blank,admin,The owner has been changed.,,,,,,
+100007,Asset 4 Add Constants,RTP1,,A2,2,,,Brian Asset,Asset 1 Blank,,Memory has been increased.,,,,Custom Cpu,6,Custom Storage
+100008,Asset 4 Upgrade Color,RTP1,,A2,4,,,Brian Asset,Asset 2 All Constants,,Even newer color,,,#ca1341,,,
+100011,Asset 5 One Power Web,RTP1,,A3,1,,,Brian Asset,Asset 4 Power 1,,Power port changed,L4,,,,,
+100013,Asset 5 Power Bad Row,RTP1,,A5,40,,,Brian Asset,Asset 4 Power 1,,Moved from non-networked to networked,L1,,,,,
+100016,Asset 6 All,VS1,,A1,40,,,Brian Asset,Asset 7 Full Height 2,bitasy,Changes to pretty much everything,L11,R11,#ca5709,AMD LightFlux 2400,312,TreeHouse Log 10
+100017,Asset 7 Network 1A,,EOS,,,,,Brian Asset,Asset 3 Net 1 Exp,,Moved to offline storage,,,,,,
+100018,Asset 7 Network 1B,RTP1,,A5,1,,,Brian Asset,Asset 3 Net 1 Exp,poweraudit,Added a new owner,,,,,,
+100022,Asset 7 Net VS 2,VS1,,A1,3,,,Brian Asset,Asset 3 Net 3 Exp,,Model has been changed to one with one less network port,,,,,,
+200000,Chassis 1 Blank DC,RTP1,,B1,2,,,Brian Chassis,Chassis 1 Blank,,Changed rack position,,,,,,
+200001,Chassis 1 Blank OS,,EOS,,,,,Brian Chassis,Chassis 6 Full,,Model changed to add power and network etc,,,,,,
+200003,Chassis 2 Owner OS Admin,RTP1,,B4,1,,,Brian Chassis,Chassis 1 Blank,bitasy,Move from offline to networked datacenter,L19,R19,,,,
+200006,Chassis 3 Upgrade All,RTP1,,B2,1,,,Brian Chassis,Chassis 2 Constants,,Custom display color removed,,,,Chassis CPU,96,Chassis Storage
+300004,Blade 1 Blank OS 5,,,,,200001,6,Brian Blade,Blade 1 Blank,,Move blade to different slot same chassis,,,,,,
+300011,Blade 3 Fill D,,,,,200001,7,Brian Blade,Blade 2 Constants,,Move blade to different chassis,,,,,,
+300017,Blade 4 Admin,,,,,200000,13,Brian Blade,Blade 2 Constants,,Remove owner,,,,,,

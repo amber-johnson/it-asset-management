@@ -1,0 +1,10 @@
+django
+djangorestframework
+tablib==1.0.0
+django-import-export==2.0.2
+django-filter
+requests
+django-multiselectfield
+--no-binary=psycopg2
+psycopg2
+pexpect

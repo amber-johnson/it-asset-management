@@ -1,0 +1,7 @@
+vendor,model_number,height,display_color,ethernet_ports,power_ports,cpu,memory,storage,comment
+Dell,R710,4,#82e0aa,2,1,Intel Xeon E5520 2.2GHz,32,2x500 GB SSD RAID1,"Retired offering
+No new purchasing"
+Lenovo,Foobar,4,#c39bd3,2,1,Intel Xeon E5520 2.2GHz,32,2x500 GB SSD RAID1,"This comment
+has *nix-style
+line breaks"
+HPE,ProLiant DL20 Gen10,1,#BB8FCE,2,1,Intel Xeon E2124 3.3GHz,16,,"These ""quotes"", and commas, are escaped!"

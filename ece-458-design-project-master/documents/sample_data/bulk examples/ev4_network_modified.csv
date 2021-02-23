@@ -1,0 +1,10 @@
+src_hostname,src_port,src_mac,dest_hostname,dest_port
+Asset 7 Network 1A,exp1,00-3a-ca-dd-4e-55,,
+Asset 7 Network 1B,exp1,112233445566,Asset 7 Network 2A,exp1
+Asset 7 Network 2A,exp1,33445566aabb,Asset 7 Network 1B,exp1
+Asset 7 Network 2A,exp2,cdcdcdefefef,,
+Asset 7 Net VS 1,exp1,,Asset 6 All,exp3
+Asset 6 All,exp4,,Asset 7 Net VS 1,exp2
+Asset 7 Net VS 1,exp3,,Asset 7 Net VS 2,exp3
+Asset 7 Net VS 1,exp4,,Asset 7 Net VS 2,exp4
+Chassis 5 Net A,1,87654321:00ff,Chassis 5 Net B,2

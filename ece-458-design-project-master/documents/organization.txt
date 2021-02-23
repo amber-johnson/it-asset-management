@@ -1,0 +1,23 @@
+Our primary source of organization is going to be the Gitlab DevOps lifecycle.
+1.	Project dependencies, timeline, and opportunities for parallel effort
+    a.	Kanban boards (Specifically Gitlab Issue Boards)
+        i.	A board is a collection of lists, where each list contains multiple issues.
+        ii.	Issues are the smallest denominator of work item; each issue is a single function that will take less than 16 hours to implement (as suggested by the EBS reading)
+            1.	Every issue has a due date. 
+        iii.	Lists can be organized in any way the team decides, here are some good practices
+            1.	There is a single list of currently available to-do items (issues). These items are all parallelizable as none of them depend on each other.
+            2.	Items that depend on other items do not go in the to-do list, but another list containing other blocked items of the same category.
+        iv.	We can create multiple board per section of the project, so that front end and back end can have their own organizational structures. In this case, we sync prerequisites between the sections using due-dates.
+            1.	Alternatively, we can have one board per evolution to organize each board according to a specific set of requirements.
+    b.	Milestones can be used to track major releases, for example each evolution can be encoded as a milestone and treated individually with our issues.
+        i.	Issues would be assigned per milestone (evolution) so that we can make sure we have all the requirements done for an upcoming evolution before we start on the next one.
+2.	 Bug/task tracking and assignment
+    a.	Bugs and tasks are assigned to team members via issues, which are subsequently given a due date and placed in the appropriate list on the issue boards.
+    b.	To make sure nothing is being doubly implemented, we make all issues as small as possible and never assign an issue to more than one person.
+    c.	To find bugs, we create unit tests (integrated with Django) and use Gitlab’s continuous integration to make sure every commit is tested for bugs across the stack as well as track error reports for failed integration tests.
+    d.	Manually discovered bugs can also be added as an issue to a Bug Reports list on the issue board.
+3.	Source code control and governance (branching, merging, code review, deployment, etc.)
+    a.	Obviously source code control will be handled with git via the Gitlab repository.
+    b.	Code review will be done via GitLab merge requests. Nobody will be allowed to merge their code to master without someone else at least looking over it first.
+        i.	Any potential problems can be reported as a comment and the commit can be fixed before the merge is completed, preventing problems further into the development cycle.
+    c.	Deployment will be handled by Gitlab Continuous Deployment. It will automatically make sure things are deployed smoothly on the production server, minimizing risk of human error and immediately informing us if anything goes wrong.

@@ -1,0 +1,10 @@
+venv
+activate.sh
+__pycache__/
+.vscode
+main.js
+npm-debug.log
+.DS_Store
+.idea
+*.iml
+.DS_Store

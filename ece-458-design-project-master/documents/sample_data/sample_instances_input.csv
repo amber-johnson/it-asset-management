@@ -1,0 +1,7 @@
+hostname,rack,rack_position,vendor,model_number,owner,comment
+server.example.com,B2,39,Dell,R710,tbletsch,"Retired offering
+No new purchasing"
+server9,B3,1,HPE,ProLiant DL20 Gen10,cpalms,"This comment
+has *nix-style
+line breaks"
+teer14,B3,2,Lenovo,Foobar,cpalms,"These ""quotes"", and commas, are escaped!"

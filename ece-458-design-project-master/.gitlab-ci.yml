@@ -1,0 +1,122 @@
+cache:
+  key: ${CI_COMMIT_REF_SLUG} # Each branch has its own node_modules in the cache
+  paths:
+  - app/hyposoft/frontend/node_modules/
+  - .cache/pip
+  - hyp_env
+
+stages:
+- build
+- test
+- staging
+- deploy
+
+build:
+  stage: build
+  script:
+  # - apt-get update -q && apt-get install nodejs -yqq
+  - python3 -V
+  - pip3 install virtualenv
+  - virtualenv hyp_env -p /usr/bin/python3
+  - source hyp_env/bin/activate
+  - /usr/bin/pip3 install -r requirements.txt
+  - cd app/hyposoft/frontend
+  - npm install
+  - npm run build
+  - cd ../../..
+  tags:
+  - dev
+
+django_test:
+  variables:
+    DB_NAME: dev
+  stage: test
+  script:
+  - python3 app/hyposoft/manage.py test
+  tags:
+  - dev
+
+stage_dev:
+  stage: staging
+  variables:
+    DB_HOST: localhost
+    DB_USER: runner
+    DB_NAME: devdb
+  script:
+  - cd /home/gitlab-runner/
+  - git clone git@gitlab.oit.duke.edu:ban20/hyposoft-group-8.git "$CI_COMMIT_SHORT_SHA-staging"
+  - cd "$CI_COMMIT_SHORT_SHA-staging"
+  - git checkout dev
+  - cd app/hyposoft/frontend
+  - npm install
+  - npm run build
+  - cd ..
+  - python3 manage.py collectstatic --no-input
+  only:
+  - dev
+  tags:
+  - dev
+
+deploy_dev:
+  stage: deploy
+  variables:
+    DB_HOST: localhost
+    DB_USER: runner
+    DB_PASS: qwerty
+    DB_NAME: devdb
+  script:
+  - rm -rf /home/gitlab-runner/hyposoft-deployed
+  - cp -rf /home/gitlab-runner/"$CI_COMMIT_SHORT_SHA-staging" /home/gitlab-runner/hyposoft-deployed
+  - python3 /home/gitlab-runner/hyposoft-deployed/app/hyposoft/manage.py migrate
+  - kill `cat /home/gitlab-runner/uwsgi.pid`
+  - rm /home/gitlab-runner/uwsgi.pid
+  - rm /home/gitlab-runner/uwsgi.log
+  - nohup sudo uwsgi --ini /etc/uwsgi/vassals/uwsgi.ini --uid 999 > /home/gitlab-runner/uwsgi.log 2>&1 &
+  - rm -rf /home/gitlab-runner/"$CI_COMMIT_SHORT_SHA-staging"
+  only:
+  - dev
+  tags:
+  - dev
+
+stage_prod:
+  stage: staging
+  variables:
+    DB_NAME: prod
+  script:
+  - cd /home/gitlab-runner/
+  - git clone git@gitlab.oit.duke.edu:ban20/hyposoft-group-8.git "$CI_COMMIT_SHORT_SHA-staging"
+  - cp -ra /home/gitlab-runner/hyposoft-deployed/app/hyposoft/frontend/node_modules /home/gitlab-runner/"$CI_COMMIT_SHORT_SHA-staging"/app/hyposoft/frontend
+  - cd "$CI_COMMIT_SHORT_SHA-staging"
+  - git checkout master
+  - cd app/hyposoft/frontend
+  - npm install
+  - npm run build
+  - cd ..
+  only:
+  - master
+  tags:
+  - prod
+  when:
+    manual
+  cache: {}
+
+
+deploy_prod:
+  stage: deploy
+  variables:
+    DB_NAME: prod
+  script:
+  - rm -rf /home/gitlab-runner/hyposoft-deployed
+  - cp -rf /home/gitlab-runner/"$CI_COMMIT_SHORT_SHA-staging" /home/gitlab-runner/hyposoft-deployed
+  - pip3 install -r /home/gitlab-runner/hyposoft-deployed/requirements.txt
+  - python3 /home/gitlab-runner/hyposoft-deployed/app/hyposoft/manage.py collectstatic --no-input
+  - python3 /home/gitlab-runner/hyposoft-deployed/app/hyposoft/manage.py migrate
+  - sudo uwsgi --reload /home/gitlab-runner/uwsgi.pid
+  - rm -rf /home/gitlab-runner/"$CI_COMMIT_SHORT_SHA-staging"
+  only:
+  - master
+  tags:
+  - prod
+  when:
+    manual
+  cache: {}
