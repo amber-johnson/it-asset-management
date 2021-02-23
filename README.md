@@ -3,10 +3,14 @@
 ### Technologies/skills demonstrated
 * React UI design and components
 * Django Python-based web framework
+* JSON objects
+* REST API
 * Unit testing
 * Issue tracking
+* Software demo
 
 ### Code samples
+
 
 
 ### Background
