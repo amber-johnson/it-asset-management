@@ -1,18 +1,20 @@
 # IT Asset Management Web Application
 
 ### Technologies/skills demonstrated
-* React/Javascript
-* Django/Python
-* Automated testing
+* React UI design and components
+* Django Python-based web framework
+* Unit testing
 * Issue tracking
 
 ### Code samples
 
 
 ### Background
+I created this web application for my senior design project in the Department of Electrical and Computer Engineering (ECE) at Duke University. The course was ECE 458: Engineering Software for Maintainability and was taught by Dr. Tyler Bletsch.  I was enrolled in the class Spring 2020 and worked on this project with three other seniors, two from the ECE Department and one from the Computer Science Department.  
 
 
 ### Project structure
 
 
 ### How to deploy
+
